@@ -1,0 +1,23 @@
+<ion-header >
+    <ion-toolbar>
+        <ion-title>List Additifs</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-list *ngIf="additives$ | async as additives">
+    
+        <ion-item *ngFor="let item of additives" routerLink="{{ item.id }}">
+            <ion-thumbnail slot="start" [ngStyle]="{'background-color': item.level | color}">
+              E{{ item.id }} 
+            </ion-thumbnail>
+            <ion-label>
+                <ion-text>
+                    <h3>{{ item.name }}</h3>
+                </ion-text>
+                <p>{{ item.type }}</p>
+            </ion-label>
+        </ion-item>
+    
+    </ion-list>
+</ion-content>
+

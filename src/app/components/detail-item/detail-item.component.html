@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="tabs/home"></ion-back-button>
+          </ion-buttons>
+        <ion-title>Détail</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card *ngIf="data"
+                class="ion-text-center">
+        <ion-card-header [ngStyle]="{'background-color': data?.level | color}">
+            <ion-card-title>E{{ data.id }}</ion-card-title>
+        </ion-card-header>
+    
+        <ion-card-content>
+            <h1>{{ data.name }}</h1>
+            <p>E{{ data.type }}</p>
+            <hr>
+            <p [ngStyle]="{'color': data?.level | color}">{{ data.level | level }}</p>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
