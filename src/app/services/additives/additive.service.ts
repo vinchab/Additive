@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { BehaviorSubject, Observable } from 'rxjs';
-import { first } from 'rxjs/operators'
+import { first, map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +16,8 @@ export class AdditiveService {
   ) { }
 
   async load(){
-    const data = await this._http.get('http://localhost:3000/additives').pipe(
-      first()
+    const data = await this._http.get<{additives?: any}>('/assets/db.json').pipe(
+      map((response) => response?.additives)
     ).toPromise()
     
     this._data$.next(data)
