@@ -29,3 +29,19 @@ ion-thumbnail {
 ion-label {
     margin-left: 10px;
 }
+
+.list-md {
+    padding-top: 0;
+}
+
+
+ion-loading {
+    color: green;
+  }
+  
+.my-custom-class {
+    --background: #222;
+    --spinner-color: #fff;
+
+    color: #fff;
+}

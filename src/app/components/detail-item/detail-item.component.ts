@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { AdditiveService } from 'src/app/services/additives/additive.service';
+import { HttpClient } from '@angular/common/http';
+import { WikiSummary } from 'src/app/interface/wikisummary/wikisummary';
+import { WikiService } from 'src/app/services/wiki/wiki.service';
 
 @Component({
   selector: 'app-detail-item',
@@ -11,11 +13,13 @@ import { AdditiveService } from 'src/app/services/additives/additive.service';
 export class DetailItemComponent implements OnInit {
   public currentId: string
   public data
+  public details: string
 
   constructor(
     private _route: ActivatedRoute,
     private additiveService: AdditiveService,
-    private _router: Router
+    private _router: Router,
+    private wikiService: WikiService
   ) { }
 
   ngOnInit(){ }
@@ -27,5 +31,9 @@ export class DetailItemComponent implements OnInit {
     if(!item) return this._router.navigate(['tabs/home'])
 
     this.data = item
+
+    this.details = await this.wikiService.getAdditiveById(this.currentId)
+    
   }
+
 }

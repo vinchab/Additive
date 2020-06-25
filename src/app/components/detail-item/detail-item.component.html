@@ -20,4 +20,7 @@
             <p [ngStyle]="{'color': data?.level | color}">{{ data.level | level }}</p>
         </ion-card-content>
     </ion-card>
+    <ion-card>
+        <ion-card-content [innerHTML]="details"></ion-card-content>
+    </ion-card>
 </ion-content>
